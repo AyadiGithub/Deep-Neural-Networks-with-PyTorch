@@ -80,6 +80,11 @@ a_col = a.view(-1,1)
 print(a_col.ndimension())
 
 
+
+#Creating a column tensor. Using an extra set of squared brackets[]
+Col_tensor = torch.tensor([[1,2,3,4,5]])
+Col_tensor.ndimension()
+
 #We can convert a numpy array to torch tensor this way
 import numpy as np
 numpy_array = np.array([0.0, 1.0, 2.0, 3.0, 4.0])
@@ -166,21 +171,34 @@ u = torch.tensor([1,2,3,-1])
 z = u+1
 print(z)
 
-
-
+#Changing value of many indexes at once
+practice_tensor = torch.tensor([2, 7, 3, 4, 6, 2, 3, 1, 2])
+selected_indexes = [3, 4, 7]
+practice_tensor[[3,4,7]] = 0
+#Or
+practice_tensor[selected_indexes] = 0
+practice_tensor
 '''
 Functions on tensors
 '''
-
+#MEAN
 a = torch.tensor([1,-1,1,-1], dtype=float)
 print(a.dtype)
 mean_a = a.mean()
 mean_a
 
+#STANDARD DEVIATION
+Standard_deviation = a.std()
+Standard_deviation
+
+#MAX
 b = torch.tensor([1, -1, 3, 4, 100])
 MaxB = b.max()
 MaxB
 
+#MIN
+MinB = b.min()
+MinB
 
 #Create a torch tensor in radiance using pi
 np.pi
@@ -206,6 +224,20 @@ import matplotlib.pyplot as plt
 plt.plot(x.numpy(), y.numpy()) #We need to convert tensors to numpy arrays
 
 
+#Constructing tensor with 25 steps in the range of 0 and pi/2.
+x = torch.linspace(0, np.pi/2, steps=25)
+y = torch.sin(x)
 
+plt.plot(x.numpy(), y.numpy())
 
+print("Max value from tensor x = ", x.max())
+print("Min value from tensor x = ", x.min())
+
+#Convert the list [-1, 1] and [1, 1] to tensors u and v. 
+#Plot the tensor u and v as a vector by using the function plotVec and find the dot product
+
+u = torch.tensor([-1, 1])
+v = torch.tensor([1, 1])
+z = torch.dot(u,v)
+print("Dot product of tensors u and v = ", np.dot(u,v))
 
