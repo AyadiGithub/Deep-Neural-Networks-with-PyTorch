@@ -26,6 +26,10 @@ For real numbers: Tensor type is either a float or a double tensor or even half 
 #To create a 1-D Tensor:
 
 import torch
+
+torch.__version__
+
+
 a = torch.tensor([7,4,3,2,6]) # create a list and cast to pytorch tensor
 
 #To find the datatype in the tensor:
@@ -86,7 +90,6 @@ torch_tensor
 back_to_numpy = torch_tensor.numpy()
 back_to_numpy
 
-
 #Converting Pandas series to tensor
 import pandas as pd
 pandas_series = pd.Series([0.1,2,0.3,10.1])
@@ -98,19 +101,109 @@ this_tensor = torch.tensor([0,1,2,3])
 torch_to_list=this_tensor.tolist()
 torch_to_list
 
-
 '''
 
 Individual values of tensors are also tensors
 
 '''
 
+new_tensor = torch.tensor([5,2,6,1])
+new_tensor[0]
+new_tensor[1]
+
+#We can use .item to return the number in the tensor
+new_tensor[0].item()
+new_tensor[1].item()
 
 
 
+'''
+
+Indexing and slicing methods for Tensors
+
+'''
+
+c = torch.tensor([20,1,2,3,4])
+#lets change the first tensor in C tensor to 0
+c[0] = 0
+
+print(c)
+
+#slice - select elements in c and assign them to d
+d = c[1:4]
+print(d)
+
+#Add or replace values in tensor c
+c[3:5] = torch.tensor([5,6])
+
+
+#Vector addition in pytorch
+#Addition must be done with vectors of the same type
+u = torch.tensor([1.0, 5.0])
+v = torch.tensor([0.0, 3.0])
+z = u + v
+z = z.type(torch.FloatTensor)
+print(z)
+
+
+#Vector multiplicaiton with a Scalar
+y = torch.tensor([1,2])
+z = 2*y
+print(z)
+
+#Product of two tensors (element wise multiplication)
+u = torch.tensor([1, 2])
+v = torch.tensor([3, 2])
+z = u*v
+print(z)
+
+#Dot product - element-wise multiplication and summation
+y = torch.dot(u,v)
+print(y) #y is still a tensor
+
+#Adding a scalar value to a tensor aka. BROADCASTING
+u = torch.tensor([1,2,3,-1])
+z = u+1
+print(z)
 
 
 
+'''
+Functions on tensors
+'''
+
+a = torch.tensor([1,-1,1,-1], dtype=float)
+print(a.dtype)
+mean_a = a.mean()
+mean_a
+
+b = torch.tensor([1, -1, 3, 4, 100])
+MaxB = b.max()
+MaxB
+
+
+#Create a torch tensor in radiance using pi
+np.pi
+x = torch.tensor([0, np.pi/2, np.pi])
+x
+
+#Apply sin(x) to tensor x
+y = torch.sin(x)
+y
+
+#Using linspace to plot mathematical functions
+M = torch.linspace(-2, 2, steps=5) #-2 is starting point, 2 is ending, 5 is number of elements to generate
+M
+
+x = torch.linspace(0, 2*np.pi, 100) #Generating 100 evenly spaced elements from 0 to 2pi
+x
+
+y = torch.sin(x)
+y
+
+
+import matplotlib.pyplot as plt
+plt.plot(x.numpy(), y.numpy()) #We need to convert tensors to numpy arrays
 
 
 
