@@ -1,6 +1,0 @@
-"""
-
-Linear Regression Training
-
-"""
-
