@@ -5,13 +5,12 @@ Simple Linear Regression
 
 """
 
-import torch
-import torch.nn as nn
-
 '''
 Manual Method
 
 '''
+import torch
+import torch.nn as nn
 
 w = torch.tensor(2.0, requires_grad = True) #Slope tensor. req_grad = true because they need to be learnt
 b = torch.tensor(-1.0, requires_grad = True) #Bias tensor. req_grad = true because they need to be learnt
@@ -39,6 +38,7 @@ model = Linear(in_features = 1, out_features = 1)
 x = torch.tensor([0.0])
 yhat = model(x.float())
 print(yhat)
+
 #Lets see the model parameters
 print(list(model.parameters()))
 
